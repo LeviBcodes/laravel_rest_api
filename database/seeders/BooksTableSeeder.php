@@ -4,8 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Faker\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Author;
+use App\Models\Book;
 
 
 class BooksTableSeeder extends Seeder
@@ -18,7 +19,6 @@ class BooksTableSeeder extends Seeder
      */
     public function run()
     {
-        //create 10 books using faker
-        Factory::create(Book::class, 10);
+        \App\Models\Book::factory()->count(10)->create();
     }
 }
