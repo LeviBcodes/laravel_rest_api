@@ -24,5 +24,6 @@ Route::get('books', [App\Http\Controllers\BookController::class, 'index']);
 Route::post('books', [App\Http\Controllers\BookController::class, 'store']);
 Route::get('books/{book}', [App\Http\Controllers\BookController::class, 'show']);
 Route::put('books/{book}', [App\Http\Controllers\BookController::class, 'update']);
+Route::patch('books/{book}', [App\Http\Controllers\BookController::class, 'update']);
 Route::delete('books/{book}', [App\Http\Controllers\BookController::class, 'destroy']);
 

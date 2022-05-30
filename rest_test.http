@@ -31,3 +31,6 @@ Content-Type: application/json
     "company": "XYZ Accounting",
     "email": "sam@email.com"
 }
+
+### First DELETE REQUEST
+DELETE http://rest_api.build/api/authors/4

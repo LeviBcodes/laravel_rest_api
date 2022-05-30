@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Http\Resources\BookResource;
+use Illuminate\Support\Facades\Validator;
 
 class BookController extends Controller
 {
@@ -26,13 +27,13 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $validate = Validator::make($request->toArray(), [
             'title' => 'required|string',
             'author_id' => 'required|integer',
             'abstract' => 'required|string',
         ]);
 
-        return response(Book::create($data), 201);
+        return response(new BookResource(Book::create($validate->validate())), 201);
     }
 
     /**
@@ -55,15 +56,15 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        $data = $request->validate([
+        $validate = Validator::make($request->toArray(), [
             'title' => 'required|string',
             'author_id' => 'required|integer',
             'abstract' => 'required|string',
         ]);
 
-        $book->update($data);
+        $book->update($validate->validate());
 
-        return response($book->update($data), 200);
+        return response(new BookResource($book), 200);
     }
 
     /**
