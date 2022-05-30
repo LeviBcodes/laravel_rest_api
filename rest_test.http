@@ -19,3 +19,15 @@ Content-Type: application/json
     "company": "ABC Construction",
     "email": "constructor@email.com"
 }
+
+### First PUT REQUEST
+PUT http://rest_api.build/api/authors/5?_method=PUT
+Accept: */*
+Content-Type: application/json
+
+{
+    "name": "Sam Smith",
+    "title": "Accounting Technician",
+    "company": "XYZ Accounting",
+    "email": "sam@email.com"
+}

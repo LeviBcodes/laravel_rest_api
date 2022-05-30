@@ -18,6 +18,7 @@ Route::get('authors', [App\Http\Controllers\AuthorController::class, 'index']);
 Route::post('authors', [App\Http\Controllers\AuthorController::class, 'store']);
 Route::get('authors/{author}', [App\Http\Controllers\AuthorController::class, 'show']);
 Route::put('authors/{author}', [App\Http\Controllers\AuthorController::class, 'update']);
+Route::patch('authors/{author}', [App\Http\Controllers\AuthorController::class, 'update']);
 Route::delete('authors/{author}', [App\Http\Controllers\AuthorController::class, 'destroy']);
 Route::get('books', [App\Http\Controllers\BookController::class, 'index']);
 Route::post('books', [App\Http\Controllers\BookController::class, 'store']);

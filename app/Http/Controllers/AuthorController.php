@@ -57,16 +57,16 @@ class AuthorController extends Controller
      */
     public function update(Request $request, Author $author)
     {
-        $data = $request->validate([
+        $validate = Validator::make($request->toArray(), [
             'name' => 'required|string',
             'title' => 'required|string',
             'company' => 'required|string',
-            'email' => 'required|email|unique:authors,email,' . $author->id,
+            'email' => 'required|email|unique:authors',
         ]);
 
-        $author->update($data);
+        $author->update($validate->validate());
 
-        return response($author->update($data), 200);
+        return response(new AuthorResource($author), 201);
     }
 
     /**
