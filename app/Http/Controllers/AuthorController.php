@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\AuthorResource;
 use Illuminate\Http\Request;
 use App\Models\Author;
 
@@ -78,7 +79,7 @@ class AuthorController extends Controller
         foreach($author->books as $book) {
             $book->delete();
         }
-        
+
         $author->delete();
 
         return response(null, 204);
