@@ -8,6 +8,9 @@ GET http://rest_api.build/api/authors/3
 ### ALL BOOKS
 GET http://rest_api.build/api/books
 
+### SINGLE BOOK
+GET http://rest_api.build/api/books/3
+
 ### FIRST POST REQUEST
 POST http://rest_api.build/api/authors
 Accept: */*

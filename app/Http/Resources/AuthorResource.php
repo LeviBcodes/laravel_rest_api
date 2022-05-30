@@ -20,7 +20,6 @@ class AuthorResource extends JsonResource
             'title' => $this->title,
             'company' => $this->company,
             'email' => $this->email,
-            'books' => BookResource::collection($this->books),
         ];
     }
 }
