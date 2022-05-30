@@ -31,13 +31,8 @@ class AuthorController extends Controller
             'company' => 'required|string',
             'email' => 'required|email|unique:authors',
         ]);
-        
-        $author = new Author();
-        $author->name = $data['name'];
-        $author->title = $data['title'];
-        $author->company = $data['company'];
-        $author->email = $data['email'];
-        $author->save();
+
+        return response(Author::create($data), 201);
     }
 
     /**
@@ -46,9 +41,9 @@ class AuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Author $author)
     {
-        //
+        return response($author, 200);
     }
 
     /**
@@ -58,9 +53,18 @@ class AuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Author $author)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string',
+            'title' => 'required|string',
+            'company' => 'required|string',
+            'email' => 'required|email|unique:authors,email,' . $author->id,
+        ]);
+
+        $author->update($data);
+
+        return response($author->update($data), 200);
     }
 
     /**
@@ -69,8 +73,10 @@ class AuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Author $author)
     {
-        //
+        $author->delete();
+
+        return response(null, 204);
     }
 }
