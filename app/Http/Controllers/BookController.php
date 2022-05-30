@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Book;
 
 class BookController extends Controller
 {
@@ -13,7 +14,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        return response(Book::all(), 200);
     }
 
     /**
@@ -24,7 +25,13 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required|string',
+            'author_id' => 'required|integer',
+            'abstract' => 'required|string',
+        ]);
+
+        return response(Book::create($data), 201);
     }
 
     /**
@@ -33,9 +40,9 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Book $book)
     {
-        //
+        return response($book, 200);
     }
 
     /**
@@ -45,9 +52,17 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Book $book)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required|string',
+            'author_id' => 'required|integer',
+            'abstract' => 'required|string',
+        ]);
+
+        $book->update($data);
+
+        return response($book->update($data), 200);
     }
 
     /**
@@ -56,8 +71,10 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Book $book)
     {
-        //
+        $book->delete();
+
+        return response(null, 204);
     }
 }

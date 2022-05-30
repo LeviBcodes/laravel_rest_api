@@ -75,6 +75,10 @@ class AuthorController extends Controller
      */
     public function destroy(Author $author)
     {
+        foreach($author->books as $book) {
+            $book->delete();
+        }
+        
         $author->delete();
 
         return response(null, 204);
