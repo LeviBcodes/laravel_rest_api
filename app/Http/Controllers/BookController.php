@@ -43,7 +43,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        return response($book, 200);
+        return response(new BookResource($book), 200);
     }
 
     /**

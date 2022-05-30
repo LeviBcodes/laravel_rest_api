@@ -44,7 +44,7 @@ class AuthorController extends Controller
      */
     public function show(Author $author)
     {
-        return response($author, 200);
+        return response(new AuthorResource($author), 200);
     }
 
     /**
