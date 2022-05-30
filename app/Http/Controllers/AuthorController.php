@@ -33,7 +33,7 @@ class AuthorController extends Controller
             'email' => 'required|email|unique:authors',
         ]);
 
-        return response(Author::create($data), 201);
+        return response(new AuthorResource(Author::create($data)), 201);
     }
 
     /**

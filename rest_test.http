@@ -1,0 +1,6 @@
+### ALL AUTHORS
+
+GET http://rest_api.build/api/authors
+
+### SINGLE AUTHOR
+GET http://rest_api.build/api/authors/3
