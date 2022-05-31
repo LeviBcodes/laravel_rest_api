@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::apiResource('authors', App\Http\Controllers\AuthorController::class);
-
-Route::apiResource('books', App\Http\Controllers\BookController::class);
+//Api Routes
+Route::apiResource([
+    //Authors Routes
+    'authors', App\Http\Controllers\AuthorController::class,
+    //Books Routes
+    'books', App\Http\Controllers\BookController::class
+]);
 
