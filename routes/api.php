@@ -15,10 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Api Routes
-Route::apiResource([
+Route::apiResources([
     //Authors Routes
-    'authors', App\Http\Controllers\AuthorController::class,
+    'authors' => App\Http\Controllers\AuthorController::class,
     //Books Routes
-    'books', App\Http\Controllers\BookController::class
+    'books' => App\Http\Controllers\BookController::class
 ]);
 
