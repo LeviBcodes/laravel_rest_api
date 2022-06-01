@@ -33,6 +33,13 @@ class BookController extends Controller
             'abstract' => 'required|string',
         ]);
 
+        if($validate->fails()){
+            return response()->json([
+                'status_code' => 400,
+                'errors' => $validate->errors()
+            ], 400);
+        }
+
         return response(new BookResource(Book::create($validate->validate())), 201);
     }
 
@@ -61,6 +68,13 @@ class BookController extends Controller
             'author_id' => 'required|integer',
             'abstract' => 'required|string',
         ]);
+
+        if($validate->fails()){
+            return response()->json([
+                'status_code' => 400,
+                'errors' => $validate->errors()
+            ], 400);
+        }
 
         $book->update($validate->validate());
 
